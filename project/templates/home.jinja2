@@ -1,0 +1,29 @@
+{% extends 'layout.jinja2' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% for message in messages %}
+        <div class="message">
+            <h1 class="title">{{ message[1] }}</h1> 
+            <p class="author">{{ message[2] }}</p> 
+            <p class="message-text">{{ message[3] }}</p>
+            <form action="/message/{{ message[0] }}/" method="get">
+                <button>see</button>
+            </form>
+            <form action="/message/update/{{ message[0] }}/" method="get">
+                <button>update</button>
+            </form>
+            <form action="/message/remove/{{ message[0] }}/" method="post">
+                <button>remove</button>
+            </form>
+        </div>
+    {% endfor %}
+    <p class="message_page_position center">
+        {% for message_page in range(message_length_by_3) %}
+            <a class="message_page" href="/messages/{{ message_page+1 }}/">{{ message_page+1 }}</a>
+        {% endfor %}
+    </p>
+{% endblock %}}    
