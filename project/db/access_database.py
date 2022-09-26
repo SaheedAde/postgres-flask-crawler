@@ -21,8 +21,8 @@ class AccessDataBase(ConfigDatabase):
         cursor.close()
         conn.commit()
         self.logger.debug('CLASS AccessDataBase INITED')
-        
-        
+
+
     def get_messages(self, indice: int=0):
         self.logger.debug('GETTING DATAS')
         conn = psycopg2.connect(**self.postgres_access)
