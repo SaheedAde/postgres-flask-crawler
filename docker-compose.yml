@@ -11,7 +11,6 @@ services:
             - backend
         volumes:
             - ./project/postgres:/appdb
-        user: postgres
         environment:
             POSTGRES_USER: appcrud
             POSTGRES_PASSWORD: "1234321"
